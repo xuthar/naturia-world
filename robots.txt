@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://xuthar.github.io/naturia-world/sitemap.xml

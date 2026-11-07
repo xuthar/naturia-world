@@ -34,3 +34,7 @@ All pages are educational and non-sexual. No photo submissions or user accounts;
 The [public correction form](https://github.com/xuthar/naturia-world/issues/new?template=correction.yml) lets visitors propose source-backed changes. GitHub login is required and submissions are public. No photos of people or private personal data.
 
 The optional `naturia-companion.js` extends history, topless, country, place, contact and resource pages with practical guides.
+
+## Private travel journal
+
+The `#/journal` section provides date-stamped illustrated postcards, entirely in local browser storage, with a JSON export button and no personal-data collection or photo uploads.

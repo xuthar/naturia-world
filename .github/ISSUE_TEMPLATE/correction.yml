@@ -1,0 +1,45 @@
+name: Naturia — factual correction
+description: Suggest a sourced correction to a country guide, beach or legal reference. Public form; no visitor photographs.
+title: "[Correction] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping to make Naturia accurate. This issue is PUBLIC. Do not include photographs of people, exact personal locations, private data or unverified accusations. Emergencies belong with the appropriate local authority.
+  - type: input
+    id: page
+    attributes:
+      label: Naturia page or location
+      placeholder: "e.g. Portugal — Praia do Meco"
+    validations:
+      required: true
+  - type: textarea
+    id: concern
+    attributes:
+      label: What needs correcting?
+      description: Describe the factual problem without personal details.
+      placeholder: "The venue has changed its published rules..."
+    validations:
+      required: true
+  - type: input
+    id: primary_source
+    attributes:
+      label: Primary source URL
+      placeholder: "https://..."
+    validations:
+      required: true
+  - type: input
+    id: checked_on
+    attributes:
+      label: When was the source checked?
+      placeholder: "YYYY-MM-DD"
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy acknowledgement
+      options:
+        - label: I have not included visitor photographs or private information.
+          required: true

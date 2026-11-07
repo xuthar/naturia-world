@@ -10,6 +10,8 @@ An illustrated, non-sexual, English-language naturism atlas and learning site. O
 - 102 directory records including 101 places and one explicit legal caution; all sourced. Regional and municipal designations must still be verified before visiting.
 - Expanded regional explorer, dedicated country pages, and location cards.
 - Illustrated signage glossary and legal observatory (legal *context*, not legal advice).
+- An integrated Understanding Naturism library with 16 detailed educational chapters, 30 searchable FAQ answers, 37 glossary entries and 16 source-linked myth checks.
+- Standalone sun safety and everyday-life resources, incorporating WHO guidance and clear medical/legal caveats.
 - Naturism Academy with 10 short lessons and an interactive etiquette quiz.
 - Naturia Magazine with eight original, source-linked editorial essays.
 - Global association/event directory (does not invent event dates).
@@ -38,3 +40,7 @@ All pages and their supplementary guides are implemented through one shared rout
 ## Private travel journal
 
 The `#/journal` section provides date-stamped illustrated postcards, entirely in local browser storage, with a JSON export button and no personal-data collection or photo uploads.
+
+## Expanded understanding naturism section
+
+Navigate to `#/naturism` for chapters on history and FKK, meaning, body neutrality, consent, privacy, everyday routines, clubs, saunas, beaches, outdoor activities, accessibility and environmental responsibility. Individual lessons use `#/learn/<slug>`. Browse `#/faq`, `#/glossary`, `#/myths`, `#/wellbeing` and `#/lifestyle` for searchable reference pages. All content is part of the same Naturia site and single route system.

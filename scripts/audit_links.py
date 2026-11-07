@@ -8,6 +8,7 @@ import pathlib
 import re
 import urllib.error
 import urllib.request
+from urllib.parse import urlparse
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 FILES = ["data.js", "app.js"]
@@ -17,7 +18,7 @@ SOURCE_DOMAINS = (
     "fenait.org", "fpn.pt", "naturismo.org", "inf-fni.org",
     "visitdenmark.com", "nationaltrust.org.uk", "nationalparks.nsw.gov.au",
     "toronto.ca", "nps.gov", "bn.org.uk", "france.fr",
-    "nfn.nl", "ffn-naturisme.com",
+    "nfn.nl", "ffn-naturisme.com", "who.int", "aanr-wc.com", "bn.org.uk", "unionenaturisti.org",
 )
 
 def urls() -> list[str]:
@@ -27,7 +28,7 @@ def urls() -> list[str]:
         if p.is_file():
             for url in LINK.findall(p.read_text(encoding="utf-8")):
                 url = url.rstrip("),.;}]")
-                if any(domain in urllib.request.urlparse(url).netloc for domain in SOURCE_DOMAINS):
+                if any(domain in urlparse(url).netloc for domain in SOURCE_DOMAINS):
                     found.add(url)
     return sorted(found)
 

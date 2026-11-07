@@ -1,0 +1,31 @@
+name: Audit Naturia Sources
+
+on:
+  schedule:
+    - cron: "17 7 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  links:
+    if: github.repository == 'xuthar/naturia-world'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check editorial source URLs
+        run: python scripts/audit_links.py
+      - name: Commit transparent source status
+        run: |
+          if ! git diff --quiet -- content/source-status.json || [ -n "$(git ls-files --others --exclude-standard content/source-status.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add content/source-status.json
+            git commit -m "chore: update primary-source link availability report"
+            git push
+          fi

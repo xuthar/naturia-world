@@ -1,0 +1,30 @@
+# 🌿 Naturia — A World, Naturally Free
+
+An illustrated, non-sexual, English-language naturism atlas and learning site. Original anime-inspired visuals and no photographs of visitors.
+
+## Website
+**https://xuthar.github.io/naturia-world/**
+
+## Features
+- Interactive SVG world map and 35 country profiles.
+- 102 directory records including 101 places and one explicit legal caution; all sourced. Regional and municipal designations must still be verified before visiting.
+- Expanded regional explorer, dedicated country pages, and location cards.
+- Illustrated signage glossary and legal observatory (legal *context*, not legal advice).
+- Naturism Academy with 10 short lessons and an interactive etiquette quiz.
+- Naturia Magazine with eight original, source-linked editorial essays.
+- Global association/event directory (does not invent event dates).
+- Private, browser-local journey planner with copyable itinerary. No login and no analytics.
+
+## Research
+Sources include FENAIT, FPN, FEN, INF-FNI, National Trust, NSW National Parks, NPS, VisitDenmark and local authorities. `naturia-data-extra.js` holds the expanded source-attributed beach directory. Newly added pins are approximate localities, **not** beach entry points. Entries tagged traditional must never be interpreted as officially authorised. All editorial entries distinguish source evidence from legal permission and personal experience.
+
+Weekly source-link HTTP checks are defined in `.github/workflows/source-audit.yml`. They produce `content/source-status.json` and do **not** automatically alter legal information. A HTTP error might be an anti-bot measure; manual review is required.
+
+## Hosting
+GitHub Pages uses GitHub Actions via `.github/workflows/publish.yml` from branch `main`. The deploy copies website files to `public/`.
+
+## Local preview
+Use `python -m http.server 8000` and visit http://localhost:8000. This project runs on static HTML, CSS and vanilla JavaScript.
+
+## Privacy and safety
+All pages are educational and non-sexual. No photo submissions or user accounts; the itinerary is saved only in the visitor's browser. No live reservation data, no false star ratings, and no certainty claims about every country's laws.

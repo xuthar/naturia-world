@@ -16,7 +16,7 @@ An illustrated, non-sexual, English-language naturism atlas and learning site. O
 - Private, browser-local journey planner with copyable itinerary. No login and no analytics.
 
 ## Research
-Sources include FENAIT, FPN, FEN, INF-FNI, National Trust, NSW National Parks, NPS, VisitDenmark and local authorities. `naturia-data-extra.js` holds the expanded source-attributed beach directory. Newly added pins are approximate localities, **not** beach entry points. Entries tagged traditional must never be interpreted as officially authorised. All editorial entries distinguish source evidence from legal permission and personal experience.
+Sources include FENAIT, FPN, FEN, INF-FNI, National Trust, NSW National Parks, NPS, VisitDenmark and local authorities. The source-attributed beach directory and the country guides live together in `data.js`. Newly added pins are approximate localities, **not** beach entry points. Entries tagged traditional must never be interpreted as officially authorised. All editorial entries distinguish source evidence from legal permission and personal experience.
 
 Weekly source-link HTTP checks are defined in `.github/workflows/source-audit.yml`. They produce `content/source-status.json` and do **not** automatically alter legal information. A HTTP error might be an anti-bot measure; manual review is required.
 
@@ -24,7 +24,7 @@ Weekly source-link HTTP checks are defined in `.github/workflows/source-audit.ym
 GitHub Pages uses GitHub Actions via `.github/workflows/publish.yml` from branch `main`. The deploy copies website files to `public/`.
 
 ## Local preview
-Use `python -m http.server 8000` and visit http://localhost:8000. This project runs on static HTML, CSS and vanilla JavaScript.
+Use `python -m http.server 8000` and visit http://localhost:8000. This project runs as a single static website with `index.html`, `styles.css`, `data.js`, `worldmap.js` and `app.js`.
 
 ## Privacy and safety
 All pages are educational and non-sexual. No photo submissions or user accounts; the itinerary is saved only in the visitor's browser. No live reservation data, no false star ratings, and no certainty claims about every country's laws.
@@ -33,7 +33,7 @@ All pages are educational and non-sexual. No photo submissions or user accounts;
 
 The [public correction form](https://github.com/xuthar/naturia-world/issues/new?template=correction.yml) lets visitors propose source-backed changes. GitHub login is required and submissions are public. No photos of people or private personal data.
 
-The optional `naturia-companion.js` extends history, topless, country, place, contact and resource pages with practical guides.
+All pages and their supplementary guides are implemented through one shared router in `app.js`. There are no separate site versions.
 
 ## Private travel journal
 

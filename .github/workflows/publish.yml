@@ -26,7 +26,7 @@ jobs:
       - name: Prepare static site
         run: |
           mkdir -p public/assets
-          cp index.html styles.css naturia-v2.css data.js naturia-data-extra.js worldmap.js app.js naturia-v2.js naturia-companion.js naturia-journal.js robots.txt sitemap.xml .nojekyll public/
+          cp index.html styles.css data.js worldmap.js app.js robots.txt sitemap.xml .nojekyll public/
           cp assets/anime-coast.webp assets/favicon.svg public/assets/
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

@@ -10,7 +10,7 @@ import urllib.error
 import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-FILES = ["data.js", "naturia-data-extra.js", "naturia-v2.js"]
+FILES = ["data.js", "app.js"]
 OUT = ROOT / "content" / "source-status.json"
 LINK = re.compile(r"https?://[^\s'\"<>`]+")
 SOURCE_DOMAINS = (

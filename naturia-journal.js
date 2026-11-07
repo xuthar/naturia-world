@@ -19,7 +19,6 @@ root.innerHTML=`<section class="v2-cover"><div class="page-width"><div class="v2
 document.getElementById("nj-save").onclick=()=>{const note=document.getElementById("nj-text").value.trim();if(!note){document.getElementById("nj-message").textContent="Write a note before saving.";return;}const date=document.getElementById("nj-date").value,mood=document.getElementById("nj-mood").value,place=document.getElementById("nj-place").value;entries.push({id:"j"+Date.now()+"-"+Math.floor(Math.random()*100000),date,mood,place,note,seed:entries.length%8});save();document.getElementById("nj-text").value="";document.getElementById("nj-message").textContent="Postcard saved on this device.";display()};
 document.getElementById("nj-export").onclick=()=>{const data=JSON.stringify({app:"Naturia Journal",exported:new Date().toISOString().slice(0,10),entries},null,2);const url=URL.createObjectURL(new Blob([data],{type:"application/json"}));const a=document.createElement("a");a.href=url;a.download="naturia-private-journal.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};
 document.getElementById("nj-clear").onclick=()=>{if(confirm("Permanently clear the journal saved in this browser?")){entries=[];save();display()}};
-const more=document.getElementById("more-nav");if(more&&!more.querySelector('a[href="#/journal"]'))more.insertAdjacentHTML("beforeend",'<a href="#/journal">💌 Private travel journal</a>');
 display();
 document.title="Private Travel Journal · Naturia";
 }

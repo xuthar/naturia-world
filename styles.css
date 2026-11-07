@@ -232,3 +232,85 @@
 @media(max-width:810px){.k-reader-grid{grid-template-columns:1fr}.k-sidebar{grid-template-columns:repeat(2,minmax(0,1fr))}.k-home-panel,.k-highlight,.k-lead{grid-template-columns:1fr}.k-lead-art{max-width:350px;margin:auto}}
 @media(max-width:580px){.k-chapter-grid,.k-gloss-grid,.k-myth-grid,.k-advice-grid,.k-sidebar{grid-template-columns:1fr}.k-hero{padding:51px 0 42px}.k-content{padding-top:28px}.k-lead,.k-home-panel{padding:21px}.k-home-topics{grid-template-columns:1fr 1fr}.k-home-topics a{padding:12px}.k-uv-table>div{grid-template-columns:95px 1fr}.k-uv-table>div>*{padding:12px;font-size:12px}.k-sun-intro{grid-template-columns:1fr;padding:23px}.k-sun-symbol{font-size:66px}.k-reader-grid{padding-top:24px}.k-search input{min-width:0;width:100%}}
 @media(prefers-reduced-motion:reduce){.k-chapter{transition:none}.k-chapter:hover{transform:none}}
+
+
+/* Naturia nature and resort editorial: consistent images, no photographs or invented reviews. */
+.stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+.nr-hero{isolation:isolate;position:relative;min-height:335px;display:flex;align-items:center;background:#1b5b6d;overflow:hidden}
+.nr-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,53,68,.82),rgba(14,73,84,.58) 63%,rgba(14,63,84,.15)),var(--nr-bg) center 48% / cover;z-index:-1}
+.nr-hero-content{padding:60px 0 70px;color:white}
+.nr-overline{font-size:11px;letter-spacing:.16em;font-weight:900;color:#adf1e3;text-transform:uppercase}
+.nr-hero h1{font-family:var(--heading);font-size:clamp(33px,5.4vw,63px);line-height:1.14;max-width:780px;margin:14px 0 18px;letter-spacing:-.04em}
+.nr-hero p{max-width:740px;font-size:15px;color:#edfaff;line-height:1.7}
+.nr-breadcrumb{font-size:12px;color:#d7e9e9;margin-top:23px}
+.nr-breadcrumb a{text-decoration:underline;color:white}
+.nr-content{padding-top:40px;padding-bottom:80px}
+.nr-content>*+*{margin-top:30px}
+.nr-note{font-size:13px;line-height:1.75;border-radius:18px;border:1px solid #aaddd5;background:linear-gradient(120deg,#eafff5,#fff9ed);padding:19px 22px;color:#2c5b64}
+.nr-note strong{color:#176f76}
+.nr-tips,.nr-quick-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.nr-tips>div,.nr-quick-grid>a{background:#fff;border-radius:20px;border:1px solid #d7eae6;padding:24px;box-shadow:0 8px 21px rgba(21,104,124,.07)}
+.nr-tips span,.nr-quick-grid span{font-size:31px}
+.nr-tips h3,.nr-quick-grid h3{margin:12px 0 8px;font-size:18px}
+.nr-tips p,.nr-quick-grid p{color:#587680;font-size:13px;line-height:1.7}
+.nr-quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.nr-quick-grid a strong{display:block;margin-top:10px;font-size:12px;color:#14858c}
+.nr-controls{display:flex;flex-wrap:wrap;gap:14px;border-radius:19px;background:#fff;border:1px solid #d5ebe5;padding:21px;align-items:end}
+.nr-controls label{display:grid;gap:8px;flex:1;min-width:175px;font-weight:800;font-size:12px;color:#44717c}
+.nr-controls select,.nr-controls input{padding:11px 13px;width:100%;border:1px solid #c8e2dc;border-radius:10px;background:#fff;font:inherit;color:#234e5b}
+.nr-count{color:#648390;font-size:12px;font-weight:800}
+.nr-resort-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.nr-resort-card{background:white;overflow:hidden;border:1px solid #d6e9e4;border-radius:23px;display:flex;flex-direction:column;box-shadow:0 10px 30px rgba(20,101,122,.08);transition:transform .2s ease,box-shadow .2s}
+.nr-resort-card:hover{transform:translateY(-4px);box-shadow:0 18px 35px rgba(20,101,122,.14)}
+.nr-resort-card>img{aspect-ratio:16/9;object-fit:cover;width:100%;display:block;background:#d6f4ef}
+.nr-card-inner{padding:20px 22px 24px;display:flex;flex-direction:column;flex:1}
+.nr-pill{display:inline-flex;align-items:center;padding:5px 10px;border-radius:99px;background:#ddf7f0;color:#1c8179;font-size:10px;font-weight:900}
+.nr-country{font-size:11px;font-weight:850;color:#79909b;margin:0 5px}
+.nr-card-inner h3{font-size:19px;line-height:1.3;letter-spacing:-.02em;margin:11px 0 8px}
+.nr-card-inner p{font-size:12px;color:#577681;line-height:1.7}
+.nr-area{font-weight:700;color:#6a8894!important}
+.nr-read{color:#16848a;font-size:12px;font-weight:850;margin-top:auto;padding-top:12px}
+.nr-method{border-top:1px solid #d7ece9;margin-top:36px;padding:23px 0;color:#4d6c75;line-height:1.75}
+.nr-method h2{font-family:var(--heading);font-size:27px;color:#224958}
+.nr-method p{font-size:14px}
+.nr-method a{font-size:13px;color:#187d89;text-decoration:underline;font-weight:800}
+.nr-profile{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(240px,.8fr);gap:27px;align-items:start}
+.nr-profile h2{font-family:var(--heading);font-size:32px;margin:16px 0}
+.nr-intro,.nr-facts,.nr-guest,.nr-side-panel{background:#fff;border-radius:21px;padding:26px;border:1px solid #d5e8e4;margin-bottom:21px}
+.nr-long{line-height:1.8;font-size:15px;color:#4b6b78}
+.nr-back{display:inline-block;color:#167d84;font-weight:800;font-size:13px;text-decoration:underline}
+.nr-review-columns{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:21px}
+.nr-review-good,.nr-review-caution{border:1px solid #d4e8e6;border-radius:17px;padding:18px;background:#edfaf4}
+.nr-review-caution{background:#fff7ed}
+.nr-review-columns h3{font-size:15px}.nr-review-columns p{font-size:13px;line-height:1.75;color:#55717b}
+.nr-facts dl{margin:0;display:grid;gap:0}
+.nr-facts dl>div{display:grid;grid-template-columns:155px 1fr;gap:13px;border-bottom:1px solid #e8f1ef;padding:12px 0}
+.nr-facts dt{font-weight:850;font-size:12px;color:#367681}.nr-facts dd{font-size:13px;color:#54727b;margin:0}
+.nr-guest h3{font-size:18px}
+.nr-guest p{font-size:13px;line-height:1.8;color:#567580}
+.nr-guest a{font-weight:800;color:#167e8b;text-decoration:underline}
+.nr-button{background:#177e87;color:white!important;display:inline-block;padding:12px 18px;border-radius:11px;text-decoration:none!important}
+.nr-side figure{margin:0;overflow:hidden;border-radius:22px;background:#fff;border:1px solid #d7ebe5}
+.nr-side figure img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.nr-side figcaption{padding:11px 15px;color:#748d96;font-size:11px;line-height:1.6}
+.nr-side-panel{margin-top:17px}.nr-side-panel h3{margin-top:0}.nr-side-panel a{display:block;padding:10px 0;font-size:13px;font-weight:800;color:#27818a;border-bottom:1px solid #e4efec}
+.nr-nature-grid,.nr-home-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.nr-nature-grid figure{margin:0;background:#fff;border:1px solid #d7eae5;border-radius:18px;overflow:hidden}
+.nr-nature-grid img,.nr-home-gallery img{width:100%;height:100%;display:block;object-fit:cover;aspect-ratio:16/10}
+.nr-nature-grid figcaption{padding:13px 15px;font-size:13px;font-weight:800;color:#326b77}
+.nr-nature-grid figcaption span{display:block;font-size:10px;color:#83989f;font-weight:500}
+.nr-home-image{position:relative;display:block;border-radius:19px;overflow:hidden;aspect-ratio:1.54;background:#e4f8f1;box-shadow:0 8px 22px rgba(30,104,131,.09)}
+.nr-home-image img{transition:transform .3s}
+.nr-home-image:hover img{transform:scale(1.04)}
+.nr-home-image span{position:absolute;bottom:0;left:0;right:0;padding:32px 15px 13px;background:linear-gradient(0deg,rgba(13,64,77,.86),transparent);font-size:14px;color:#fff;font-weight:900}
+.nr-wild-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.nr-wild-card{display:grid;grid-template-columns:43% 1fr;overflow:hidden;background:#fff;border-radius:19px;border:1px solid #d4e8e3}
+.nr-wild-card>img{height:100%;width:100%;min-height:235px;object-fit:cover}
+.nr-wild-card>div{padding:20px}.nr-wild-card h3{font-size:18px;margin:12px 0}
+.nr-wild-card p{font-size:12px;color:#54727a;line-height:1.75}
+.nr-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}.nr-links a{color:#14868e;font-size:12px;font-weight:850;text-decoration:underline}
+.nr-empty{padding:20px;border-radius:14px;background:#fff;color:#667e89}
+@media(max-width:1110px){.nr-resort-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.nr-wild-grid{grid-template-columns:1fr}}
+@media(max-width:850px){.nr-profile{grid-template-columns:1fr}.nr-tips,.nr-nature-grid,.nr-home-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){.nr-resort-grid,.nr-nature-grid,.nr-home-gallery,.nr-tips,.nr-quick-grid,.nr-review-columns{grid-template-columns:1fr}.nr-wild-card{grid-template-columns:1fr}.nr-wild-card>img{max-height:210px;min-height:0}.nr-facts dl>div{grid-template-columns:1fr;gap:3px}.nr-hero-content{padding:45px 0 55px}.nr-content{padding-top:25px}.stats{grid-template-columns:1fr}.nr-controls{padding:15px}.nr-hero h1{font-size:37px}}
+@media(prefers-reduced-motion:reduce){.nr-resort-card,.nr-home-image img{transition:none}.nr-resort-card:hover{transform:none}.nr-home-image:hover img{transform:none}}

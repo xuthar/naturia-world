@@ -28,6 +28,7 @@ jobs:
           mkdir -p public/assets
           cp index.html styles.css data.js worldmap.js app.js robots.txt sitemap.xml .nojekyll public/
           cp assets/anime-coast.webp assets/favicon.svg public/assets/
+          cp -R assets/nature public/assets/
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload static site

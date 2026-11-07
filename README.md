@@ -44,3 +44,10 @@ The `#/journal` section provides date-stamped illustrated postcards, entirely in
 ## Expanded understanding naturism section
 
 Navigate to `#/naturism` for chapters on history and FKK, meaning, body neutrality, consent, privacy, everyday routines, clubs, saunas, beaches, outdoor activities, accessibility and environmental responsibility. Individual lessons use `#/learn/<slug>`. Browse `#/faq`, `#/glossary`, `#/myths`, `#/wellbeing` and `#/lifestyle` for searchable reference pages. All content is part of the same Naturia site and single route system.
+
+## Original illustrated landscape gallery and resort research
+- Six original anime-style landscape illustrations stored in `assets/nature/`, all depicting **imaginary scenes**, not real resort images.
+- 31 original desk-researched resort accommodation profiles in `#/resorts`, searchable by country and dress policy.
+- Resort notes discuss operator-described amenities, setting and practical caveats. Only selected profiles link to independently published, authentic traveller-review sites; no manufactured guest feedback, star ratings, live prices or booking availability.
+- 15 additional source-attributed Croatian island coves and traditional coastal areas; `#/wild` also features relevant existing Spain/Portugal entries. A remote coastline is never assumed to permit nudity.
+- Main homepage features landscape gallery and resort/wild discovery cards; the redundant photographs counter has been removed.

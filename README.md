@@ -28,3 +28,9 @@ Use `python -m http.server 8000` and visit http://localhost:8000. This project r
 
 ## Privacy and safety
 All pages are educational and non-sexual. No photo submissions or user accounts; the itinerary is saved only in the visitor's browser. No live reservation data, no false star ratings, and no certainty claims about every country's laws.
+
+## Editorial corrections
+
+The [public correction form](https://github.com/xuthar/naturia-world/issues/new?template=correction.yml) lets visitors propose source-backed changes. GitHub login is required and submissions are public. No photos of people or private personal data.
+
+The optional `naturia-companion.js` extends history, topless, country, place, contact and resource pages with practical guides.

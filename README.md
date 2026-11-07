@@ -51,3 +51,7 @@ Navigate to `#/naturism` for chapters on history and FKK, meaning, body neutrali
 - Resort notes discuss operator-described amenities, setting and practical caveats. Only selected profiles link to independently published, authentic traveller-review sites; no manufactured guest feedback, star ratings, live prices or booking availability.
 - 15 additional source-attributed Croatian island coves and traditional coastal areas; `#/wild` also features relevant existing Spain/Portugal entries. A remote coastline is never assumed to permit nudity.
 - Main homepage features landscape gallery and resort/wild discovery cards; the redundant photographs counter has been removed.
+
+## Atlas expansion: Americas, South America and Asia
+
+On 7 November 2026, the atlas gained 73 geographically diverse source-attributed points and Argentina as a national guide: US beach sections and AANR clubs, Canadian clubs, Mexico's Zipolite visitor settings, federation-listed Brazilian beaches, two officially recognised Uruguayan beaches, historically authorised Argentine beaches, Chile's Playa Luna and Thai private naturist resorts. Japanese onsen are marked as a **separate traditional-bathing category, not naturist beaches**. Every entry links its source; all coordinates are intentionally rough geographical orientation, not access/entry coordinates. We do not infer legality from remoteness or a secondary directory. The atlas offers geographic quick-focus buttons to make America and Asia practical to browse.

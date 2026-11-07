@@ -314,3 +314,10 @@
 @media(max-width:850px){.nr-profile{grid-template-columns:1fr}.nr-tips,.nr-nature-grid,.nr-home-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:580px){.nr-resort-grid,.nr-nature-grid,.nr-home-gallery,.nr-tips,.nr-quick-grid,.nr-review-columns{grid-template-columns:1fr}.nr-wild-card{grid-template-columns:1fr}.nr-wild-card>img{max-height:210px;min-height:0}.nr-facts dl>div{grid-template-columns:1fr;gap:3px}.nr-hero-content{padding:45px 0 55px}.nr-content{padding-top:25px}.stats{grid-template-columns:1fr}.nr-controls{padding:15px}.nr-hero h1{font-size:37px}}
 @media(prefers-reduced-motion:reduce){.nr-resort-card,.nr-home-image img{transition:none}.nr-resort-card:hover{transform:none}.nr-home-image:hover img{transform:none}}
+
+/* Global map geographic focus and distinct traditional Japanese bathing markers. */
+.atlas-focus-bar{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin:0 0 19px;padding:15px 18px;background:linear-gradient(110deg,#e9faf4,#f5f0ff);border:1px solid #d2eae5;border-radius:18px}
+.atlas-focus-bar span{font-size:12px;font-weight:900;color:#416c77;margin-right:5px}
+.atlas-focus-bar button{border:1px solid #c8e3de;background:white;border-radius:999px;padding:8px 13px;color:#277781;font-size:12px;font-weight:800;cursor:pointer}
+.atlas-focus-bar button:hover,.atlas-focus-bar button:focus-visible{border-color:#2b9b95;background:#e1f7ef;outline:2px solid #bfe9df}
+.map-marker.wellness{fill:#eea06e;stroke:#fff;stroke-width:1.7}

@@ -1,0 +1,208 @@
+{
+  "run_date_utc": "2026-11-09",
+  "method": "HTTP availability only. This does not verify legal content, accuracy, opening, permissions or official recognition.",
+  "checked_count": 40,
+  "needs_review_count": 0,
+  "results": [
+    {
+      "url": "https://bn.org.uk/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://bn.org.uk/aboutnaturism/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://bn.org.uk/news/information/about-naturism/frequently-asked-questions-r19/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://bn.org.uk/news/news/inf-fni-60th-anniversary-r203/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://bn.org.uk/policing/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://events.inf-fni.org/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://fenait.org/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://fenait.org/associazioni-federate",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://fenait.org/luoghi-naturisti",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://ffn-naturisme.com/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://inf-fni.org/about-naturism/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://inf-fni.org/federations/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://inf-fni.org/fifty-years-of-the-definition-of-naturism/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://naturismo.org/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://naturismo.org/legalidad-nudismo/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://naturismo.org/playas-nudistas/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://naturismo.org/playas-nudistas/asturias/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://naturismo.org/playas-nudistas/baleares/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://naturismo.org/playas-nudistas/baleares/mallorca/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://naturismo.org/playas-nudistas/canarias/tenerife/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://nfn.nl/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://nfn.nl/over-naaktrecreatie/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://unionenaturisti.org/inf-fni",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://www.aanr-wc.com/clubs--resorts.html",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://www.aanr-wc.com/nude-etiquette.html",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://www.fenait.org/luoghi-naturisti",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://www.fpn.pt/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://www.fpn.pt/Praias_toleradas.html",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://www.fpn.pt/praias_naturistas.html",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://www.france.fr/en/article/faq-naturism-france/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://www.nationalparks.nsw.gov.au/things-to-do/swimming-spots/cobblers-beach",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://www.nationaltrust.org.uk/visit/dorset/studland-bay/naturism-at-studland-bay",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://www.nps.gov/places/000/sandy-hook-beach-g-gunnison-beach.htm",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/beaches-gardens-attractions/beaches/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://www.toronto.ca/explore-enjoy/toronto-island-ferries/things-to-do-on-toronto-island/",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://www.visitdenmark.com/denmark/plan-your-trip/houstrup-beach-gdk602687",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://www.visitdenmark.com/denmark/plan-your-trip/plan-your-trip-faq",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://www.visitdenmark.com/denmark/plan-your-trip/risemark-strand-beach-gdk1101744",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://www.who.int/news-room/questions-and-answers/item/radiation-protecting-against-skin-cancer",
+      "status": "reachable",
+      "http_code": 200
+    },
+    {
+      "url": "https://www.who.int/news-room/questions-and-answers/item/radiation-the-ultraviolet-%28uv%29-index",
+      "status": "reachable",
+      "http_code": 200
+    }
+  ]
+}

@@ -513,3 +513,5 @@ h1,h2{font-weight:700}
 .nr-home-photo>img{width:100%;height:100%;object-fit:cover}
 .nr-home-image>span{z-index:3}
 @media(max-width:580px){.nr-resort-photo{height:180px;min-height:180px}.nr-resort-detail-photo{min-height:220px}}
+
+.country-photo{height:160px;margin:-1px -1px 0;border-radius:25px 25px 0 0}.country-card-content{padding:21px 23px 23px}.country-photo.has-real-photo{min-height:160px}.country-photo .pin{margin-left:auto}

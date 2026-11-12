@@ -41,7 +41,13 @@ function mount(p){
        // These known Commons views visibly include beach visitors; keep Naturia's
        // real-place gallery landscape-only and people-photo-free.
        const cleanTitle=norm(title).replace(/_/g," ");
-       if(cleanTitle.includes("lido di dante - ravenna 2016")||cleanTitle==="ravenna, lido di dante (01).jpg")return null;
+       const reviewedBassonaFiles=new Set([
+         "lido di dante looking towards lido di adriano - ravenna 2016.jpg",
+         "la pineta di lido di dante dopo l'incendio - panoramio.jpg",
+         "ravenna, stagno del lido di dante (02).jpg",
+         "ravenna, lido di dante (05).jpg"
+       ]);
+       if(p.id==="bassona"&&!reviewedBassonaFiles.has(cleanTitle))return null;
        const categories=(page.categories||[]).map(x=>x.title||"").join(" ");
        const description=plain(meta.ImageDescription?.value||meta.ObjectName?.value||"");
        const searchText=norm(title+" "+categories+" "+description);

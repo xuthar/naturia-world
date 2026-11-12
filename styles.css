@@ -443,3 +443,17 @@ h1,h2{font-weight:700}
 .btn.btn-peach{background:#fb9d74;color:#482d2b;border-color:#fb9d74}
 .btn.btn-peach:hover{background:#f58c67;color:#482d2b;border-color:#f58c67}
 .btn.btn-quiet{background:transparent;color:#176f73;border-color:#b5dbd9;box-shadow:none}
+
+
+/* Footer contrast on the light sage background. */
+.footer{background:#edf1e8;color:#263c37}
+.footer h3{color:#203b35}
+.footer p{color:#405a53}
+.footer .footer-brand{color:#176f73}
+.footer .footer-brand small{color:#476b63}
+.footer-grid>div:not(:first-child) a{color:#24594f}
+.footer-grid a:hover{color:#103f39;text-decoration:underline;text-underline-offset:3px}
+.footer-tag{color:#744a31}
+.footer-tiny{color:#405a53!important}
+.footer-base{border-top-color:#c8d5ca;color:#4b625a}
+.footer a:focus-visible{outline:3px solid #176f73;outline-offset:3px;border-radius:3px}

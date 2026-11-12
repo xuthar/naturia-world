@@ -496,3 +496,6 @@ h1,h2{font-weight:700}
 .nr-wild-photo .nr-photo-credit{position:absolute;left:8px;right:8px;bottom:8px;padding:5px 7px;border-radius:6px;background:rgba(12,48,54,.78);color:#fff;font-size:9px;line-height:1.25}
 .nr-wild-photo.photo-not-found{border-right:1px solid #d4e8e3}
 @media(max-width:580px){.nr-wild-photo,.nr-wild-photo>img{min-height:190px}}
+
+.nr-photo-note{margin:14px 0 20px;padding:13px 16px;border:1px solid #dce8df;border-radius:13px;background:rgba(255,255,255,.78);color:#58716a;font-size:12px;line-height:1.6}
+.nr-photo-note strong{color:#244e4b}

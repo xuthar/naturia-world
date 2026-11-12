@@ -15,7 +15,7 @@ const isReusable=license=>{
  return l==="cc0"||/^cc0\b/.test(l)||/^public domain\b/.test(l)||/^pd\b/.test(l)||/^cc by(?:-sa)?\s*[0-9]/i.test(l);
 };
 const tokens=s=>(norm(s).match(/[a-z0-9]+/g)||[]).filter(t=>t.length>=4&&!stop.has(t));
-const banned=(s)=>tokens(s).some(t=>blocked.has(t))||/(^|[ _-])(people|person|portrait|selfie|tourist|visitor|nudist|nude|naked|naturist|naturism|topless|family|children|girl|boy|woman|man|gay|leaves?|leaf|beaches?|spiaggia|spiagge|swimmers?|illustrations?|drawings?|diagrams?|engravings?|encyclop(a)?edia|typewriters?|skrifmaskin|nordisk.?familjebok)([ _.-]|$)/i.test(String(s||""));
+const banned=(s)=>tokens(s).some(t=>blocked.has(t))||/(^|[ _-])(people|person|portrait|selfie|tourist|visitor|nudist|nude|naked|naturist|naturism|topless|family|children|girl|boy|woman|man|gay|swimmers?|illustrations?|drawings?|diagrams?|engravings?|encyclop(a)?edia|typewriters?|skrifmaskin|nordisk.?familjebok)([ _.-]|$)/i.test(String(s||""));
 function mount(p){
  const host=document.getElementById("place-photo-gallery");
  if(!host||!p||!Array.isArray(p.coords))return;
@@ -114,8 +114,8 @@ async function searchCardPhoto(p){
    const license=plain(meta.LicenseShortName&&meta.LicenseShortName.value||""),point=page.coordinates&&page.coordinates[0],fileLat=Number(point&&point.lat||meta.GPSLatitude&&meta.GPSLatitude.value),fileLon=Number(point&&point.lon||meta.GPSLongitude&&meta.GPSLongitude.value);
    let distance=null;if(Number.isFinite(fileLat)&&Number.isFinite(fileLon)){const rad=x=>x*Math.PI/180,dLat=rad(fileLat-lat),dLon=rad(fileLon-lon),aa=Math.sin(dLat/2)**2+Math.cos(rad(lat))*Math.cos(rad(fileLat))*Math.sin(dLon/2)**2;distance=6371000*2*Math.atan2(Math.sqrt(aa),Math.sqrt(1-aa));}
    const scenic=/\b(beach|shore|coast|coastal|cove|island|dune|ocean|sea|coastline|landscape|bay|lagoon|cliff|headland|lake|river|waterfall|forest|park|marina|harbour|harbor)\b/i.test(norm(title+" "+categories+" "+description));
-   const nearby=Number.isFinite(distance)&&distance<=2500&&scenic;
-   if(!info||!info.thumburl||!/^image\/(jpeg|png|webp)$/i.test(info.mime||"")||!isReusable(license)||banned(title+" "+description+" "+categories))return null;
+   const nearby=Number.isFinite(distance)&&distance<=10000&&scenic;
+   if(!info||!info.thumburl||!/^image\/(jpeg|png|webp)$/i.test(info.mime||"")||!isReusable(license)||banned(title+" "+description))return null;
    if(Number.isFinite(distance)&&distance>10000)return null;
    if(matched.length<Math.min(2,matchTokens.length)&&!nearby)return null;
    const width=Number(info.width||0),height=Number(info.height||0);if(width<800||height<400||width<height)return null;
@@ -136,7 +136,7 @@ function mountCards(list,container){
      if(!photo){el.dataset.photoState="empty";el.classList.add("photo-not-found");const placeholder=el.querySelector(".nr-photo-placeholder");if(placeholder)placeholder.textContent="No verified real place photo yet";return;}
      el.dataset.photoState="loaded";el.classList.add("has-real-photo");
      const proximity=photo.exact?"":" · nearby landscape";
-     const credit='<span class="nr-photo-credit">'+esc(photo.author)+' · '+esc(photo.license)+proximity+' · Wikimedia Commons</span>';
+     const credit='<span class="nr-photo-credit">'+(photo.file?'<a href="'+esc(photo.file)+'" target="_blank" rel="noopener noreferrer">'+esc(photo.title||"Photo source")+'</a> · ':'')+esc(photo.author)+' · '+(photo.licenseUrl?'<a href="'+esc(photo.licenseUrl)+'" target="_blank" rel="noopener noreferrer">'+esc(photo.license)+'</a>':esc(photo.license))+proximity+' · Wikimedia Commons</span>';
      const img='<img src="'+esc(photo.thumb)+'" alt="'+(photo.exact?"Landscape at ":"Nearby landscape near ")+esc(p.name)+' · Wikimedia Commons" loading="lazy" referrerpolicy="no-referrer">';
      if(el.classList.contains("nr-wild-photo"))el.innerHTML=img+credit;else{el.insertAdjacentHTML("afterbegin",img);el.insertAdjacentHTML("beforeend",credit);}
    });

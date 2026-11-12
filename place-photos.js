@@ -28,7 +28,7 @@ function mount(p){
    button.disabled=true;button.textContent="Searching open photographs…";
    results.innerHTML='<p class="place-photo-status">Checking geotagged photos, place names and reuse licences…</p>';
    const q=new URL("https://commons.wikimedia.org/w/api.php");
-   const params={action:"query",format:"json",origin:"*",generator:"search",gsrsearch:tokens(p.name).join(" "),gsrnamespace:"6",gsrlimit:"50",prop:"imageinfo|categories|coordinates",iiprop:"url|extmetadata|mime|size",iiurlwidth:"1200",iilimit:"1",cllimit:"30"};
+   const params={action:"query",format:"json",origin:"*",generator:"search",gsrsearch:(tokens(p.name)[0]||p.name),gsrnamespace:"6",gsrlimit:"50",prop:"imageinfo|categories|coordinates",iiprop:"url|extmetadata|mime|size",iiurlwidth:"1200",iilimit:"1",cllimit:"30"};
    for(const [k,v] of Object.entries(params))q.searchParams.set(k,v);
    try{
      const response=await fetch(q.toString(),{credentials:"omit",referrerPolicy:"no-referrer",headers:{Accept:"application/json"}});

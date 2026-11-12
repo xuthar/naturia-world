@@ -51,7 +51,8 @@ function mount(p){
        const categories=(page.categories||[]).map(x=>x.title||"").join(" ");
        const description=plain(meta.ImageDescription?.value||meta.ObjectName?.value||"");
        const searchText=norm(title+" "+categories+" "+description);
-       const hasName=[...placeTokens].some(t=>searchText.includes(t));
+       const searchWords=new Set(searchText.match(/[a-z0-9]+/g)||[]);
+       const hasName=[...placeTokens].some(t=>searchWords.has(t));
        const license=plain(meta.LicenseShortName?.value||"");
        const point=page.coordinates?.[0];
        const fileLat=Number(point?.lat??meta.GPSLatitude?.value),fileLon=Number(point?.lon??meta.GPSLongitude?.value);
@@ -116,7 +117,7 @@ async function searchCardPhoto(p){
    if(Number.isFinite(distance)&&distance>10000)return null;
    if(matched.length<Math.min(2,matchTokens.length))return null;
    const width=Number(info.width||0),height=Number(info.height||0);if(width<800||height<400||width<height)return null;
-   return {title:title,thumb:info.thumburl,file:info.descriptionurl,license:license,licenseUrl:meta.LicenseUrl&&meta.LicenseUrl.value||"",author:plain(meta.Artist&&meta.Artist.value||meta.Credit&&meta.Credit.value||"Author not stated"),distance:distance,score:matched.length*100-(distance===null?500:distance/1000)};
+   return {title:title,thumb:info.thumburl,file:info.descriptionurl,license:license,licenseUrl:meta.LicenseUrl&&meta.LicenseUrl.value||"",author:plain(meta.Artist&&meta.Artist.value||meta.Credit&&meta.Credit.value||"Author not stated"),distance:distance,exact:matched.length>0,score:(matched.length?matched.length*100:40)-(distance===null?500:distance/1000)};
  };
  const request=async params=>{const u=new URL("https://commons.wikimedia.org/w/api.php");for(const k of Object.keys(params))u.searchParams.set(k,params[k]);for(const kv of Object.entries({action:"query",format:"json",origin:"*",prop:"imageinfo|categories|coordinates",iiprop:"url|extmetadata|mime|size",iiurlwidth:"900",iilimit:"1",cllimit:"30"}))u.searchParams.set(kv[0],kv[1]);const r=await fetch(u.toString(),{credentials:"omit",referrerPolicy:"no-referrer",headers:{Accept:"application/json"}});if(!r.ok)throw new Error("Commons unavailable");return r.json();};
  const geo=await request({generator:"geosearch",ggscoord:lat+"|"+lon,ggsradius:"10000",ggsnamespace:"6",ggslimit:"50"});
@@ -132,8 +133,9 @@ function mountCards(list,container){
      if(!el.isConnected)return;
      if(!photo){el.dataset.photoState="empty";el.classList.add("photo-not-found");if(el.classList.contains("nr-wild-photo"))el.innerHTML='<span class="nr-photo-placeholder">No verified real photo found</span>';return;}
      el.dataset.photoState="loaded";el.classList.add("has-real-photo");
-     const credit='<span class="nr-photo-credit">'+esc(photo.author)+' · '+esc(photo.license)+' · Wikimedia Commons</span>';
-     const img='<img src="'+esc(photo.thumb)+'" alt="Landscape at '+esc(p.name)+' · Wikimedia Commons" loading="lazy" referrerpolicy="no-referrer">';
+     const proximity=photo.exact?"":" · nearby landscape";
+     const credit='<span class="nr-photo-credit">'+esc(photo.author)+' · '+esc(photo.license)+proximity+' · Wikimedia Commons</span>';
+     const img='<img src="'+esc(photo.thumb)+'" alt="'+(photo.exact?"Landscape at ":"Nearby landscape near ")+esc(p.name)+' · Wikimedia Commons" loading="lazy" referrerpolicy="no-referrer">';
      if(el.classList.contains("nr-wild-photo"))el.innerHTML=img+credit;else{el.insertAdjacentHTML("afterbegin",img);el.insertAdjacentHTML("beforeend",credit);}
    });
  };

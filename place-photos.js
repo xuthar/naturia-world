@@ -34,9 +34,8 @@ function mount(p){
      const response=await fetch(q.toString(),{credentials:"omit",referrerPolicy:"no-referrer",headers:{Accept:"application/json"}});
      if(!response.ok)throw new Error("Photo service unavailable");
      const data=await response.json();
-     const pages=Object.values(data?.query?.pages||{});
      const placeTokens=new Set(tokens(p.name||""));
-     const found=pages.map(page=>{
+     const collect=pages=>pages.map(page=>{
        const info=page.imageinfo&&page.imageinfo[0],meta=info&&info.extmetadata||{};
        const title=(page.title||"").replace(/^File:/,"");
        const categories=(page.categories||[]).map(x=>x.title||"").join(" ");
@@ -58,7 +57,22 @@ function mount(p){
        if(imgWidth<800||imgHeight<400||imgWidth<imgHeight)return null;
        return {title,thumb:info.thumburl,file:info.descriptionurl,license,licenseUrl:meta.LicenseUrl?.value||"",author:plain(meta.Artist?.value||meta.Credit?.value||"Author not stated"),distance:Number.isFinite(distance)?distance:null};
      }).filter(Boolean);
-     let unique=found.filter((x,i,a)=>a.findIndex(y=>y.title===x.title)===i).slice(0,6);
+     const dedupe=items=>items.filter((x,i,a)=>a.findIndex(y=>y.title===x.title)===i).slice(0,6);
+     let pages=Object.values(data?.query?.pages||{});
+     let unique=dedupe(collect(pages));
+     // Exact-name search can miss local nicknames such as Bassona. If needed,
+     // ask Commons for files with GPS metadata near the known map point and
+     // still require a locality token in the file title, description or categories.
+     if(!unique.length){
+       const nearby=new URL("https://commons.wikimedia.org/w/api.php");
+       const nearParams={action:"query",format:"json",origin:"*",generator:"geosearch",ggscoord:lat+"|"+lon,ggsradius:"10000",ggsnamespace:"6",ggslimit:"50",prop:"imageinfo|categories|coordinates",iiprop:"url|extmetadata|mime|size",iiurlwidth:"1200",iilimit:"1",cllimit:"30"};
+       for(const [k,v] of Object.entries(nearParams))nearby.searchParams.set(k,v);
+       const nearResponse=await fetch(nearby.toString(),{credentials:"omit",referrerPolicy:"no-referrer",headers:{Accept:"application/json"}});
+       if(!nearResponse.ok)throw new Error("Photo service unavailable");
+       const nearData=await nearResponse.json();
+       pages=Object.values(nearData?.query?.pages||{});
+       unique=dedupe(collect(pages));
+     }
      // Verified Commons landscape fallback while the live search API is occasionally inconsistent.
      if(!unique.length&&p.id==="capocotta"){
        unique=[{title:"Dune di Capocotta.jpg",thumb:"https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Dune_di_Capocotta.jpg/1280px-Dune_di_Capocotta.jpg",file:"https://commons.wikimedia.org/wiki/File:Dune_di_Capocotta.jpg",license:"CC BY-SA 3.0",licenseUrl:"https://creativecommons.org/licenses/by-sa/3.0",author:"Patafisik",distance:4671}];
@@ -69,7 +83,7 @@ function mount(p){
        results.innerHTML='<div class="place-photo-grid">'+unique.map(x=>{
          const d=x.distance===null?"exact name match · no geotag available":(x.distance<1000?Math.round(x.distance)+" m from the approximate map point":(x.distance/1000).toFixed(1)+" km from the approximate map point");
          return '<figure class="place-photo-card"><a href="'+esc(x.file)+'" target="_blank" rel="noopener noreferrer"><img src="'+esc(x.thumb)+'" alt="Landscape photograph associated with '+esc(p.name)+'" loading="lazy" referrerpolicy="no-referrer"></a><figcaption><strong>'+esc(x.title)+'</strong><span>'+esc(d)+' · Wikimedia Commons</span><span>Author: '+esc(x.author)+'</span><span>Licence: '+(x.licenseUrl?'<a href="'+esc(x.licenseUrl)+'" target="_blank" rel="noopener noreferrer">'+esc(x.license)+'</a>':esc(x.license))+' · <a href="'+esc(x.file)+'" target="_blank" rel="noopener noreferrer">file page</a></span></figcaption></figure>';
-       }).join("")+'</div><p class="place-photo-note">These open-license photographs matched the locality name. Where Commons provides coordinates, only files within 10 km of the approximate map marker are shown. Open each file page to confirm the scene and attribution.</p>';
+       }).join("")+'</div><p class="place-photo-note">These open-license photographs matched the locality name or were geotagged near the map point. Where Commons provides coordinates, only files within 10 km of the approximate map marker are shown. Open each file page to confirm the scene and attribution.</p>';
      }
    }catch(error){
      results.innerHTML='<p class="place-photo-status">Wikimedia Commons could not be reached just now. The illustrated destination guide is still available; try again later.</p>';

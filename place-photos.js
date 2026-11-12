@@ -52,7 +52,7 @@ function mount(p){
          distance=6371000*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
        }
        const mime=info?.mime||"";
-       if(!info||!info.thumburl||!/^image\/(jpeg|png|webp)$/i.test(mime)||!hasName||!isReusable(license)||banned(title+" "+categories))return null;
+       if(!info||!info.thumburl||!/^image\/(jpeg|png|webp)$/i.test(mime)||!hasName||!isReusable(license)||banned(title+" "+description))return null;
        if(Number.isFinite(distance)&&distance>10000)return null;
        const imgWidth=info.width||info.thumbwidth||0,imgHeight=info.height||info.thumbheight||0;
        if(imgWidth<800||imgHeight<400||imgWidth<imgHeight)return null;

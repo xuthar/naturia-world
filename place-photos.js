@@ -40,7 +40,7 @@ function mount(p){
        const title=(page.title||"").replace(/^File:/,"");
        // These known Commons views visibly include beach visitors; keep Naturia's
        // real-place gallery landscape-only and people-photo-free.
-       if(/lido[_ ]di[_ ]dante[_ ]-[_ ]ravenna[_ ]2016(?:[_ ]\(5\))?\.jpg/i.test(title))return null;
+       if(norm(title).replace(/_/g," ").includes("lido di dante - ravenna 2016"))return null;
        const categories=(page.categories||[]).map(x=>x.title||"").join(" ");
        const description=plain(meta.ImageDescription?.value||meta.ObjectName?.value||"");
        const searchText=norm(title+" "+categories+" "+description);

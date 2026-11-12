@@ -15,7 +15,7 @@ const isReusable=license=>{
  return l==="cc0"||/^cc0\b/.test(l)||/^public domain\b/.test(l)||/^pd\b/.test(l)||/^cc by(?:-sa)?\s*[0-9]/i.test(l);
 };
 const tokens=s=>(norm(s).match(/[a-z0-9]+/g)||[]).filter(t=>t.length>=4&&!stop.has(t));
-const banned=(s)=>tokens(s).some(t=>blocked.has(t))||/(^|[ _-])(people|person|portrait|selfie|tourist|visitor|nudist|nude|naked|naturist|naturism|topless|family|children|girl|boy|woman|man|gay|leaves?|leaf|beaches?|spiaggia|spiagge|swimmers?)([ _.-]|$)/i.test(String(s||""));
+const banned=(s)=>tokens(s).some(t=>blocked.has(t))||/(^|[ _-])(people|person|portrait|selfie|tourist|visitor|nudist|nude|naked|naturist|naturism|topless|family|children|girl|boy|woman|man|gay|leaves?|leaf|beaches?|spiaggia|spiagge|swimmers?|illustrations?|drawings?|diagrams?|engravings?|encyclop(a)?edia|typewriters?|skrifmaskin|nordisk.?familjebok)([ _.-]|$)/i.test(String(s||""));
 function mount(p){
  const host=document.getElementById("place-photo-gallery");
  if(!host||!p||!Array.isArray(p.coords))return;

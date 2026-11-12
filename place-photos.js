@@ -113,9 +113,11 @@ async function searchCardPhoto(p){
    const info=page.imageinfo&&page.imageinfo[0],meta=info&&info.extmetadata||{},title=(page.title||"").replace(/^File:/,""),categories=(page.categories||[]).map(c=>c.title||"").join(" "),description=plain(meta.ImageDescription&&meta.ImageDescription.value||meta.ObjectName&&meta.ObjectName.value||""),searchText=norm(title+" "+categories+" "+description),searchWords=new Set(searchText.match(/[a-z0-9]+/g)||[]),matched=matchTokens.filter(t=>searchWords.has(t));
    const license=plain(meta.LicenseShortName&&meta.LicenseShortName.value||""),point=page.coordinates&&page.coordinates[0],fileLat=Number(point&&point.lat||meta.GPSLatitude&&meta.GPSLatitude.value),fileLon=Number(point&&point.lon||meta.GPSLongitude&&meta.GPSLongitude.value);
    let distance=null;if(Number.isFinite(fileLat)&&Number.isFinite(fileLon)){const rad=x=>x*Math.PI/180,dLat=rad(fileLat-lat),dLon=rad(fileLon-lon),aa=Math.sin(dLat/2)**2+Math.cos(rad(lat))*Math.cos(rad(fileLat))*Math.sin(dLon/2)**2;distance=6371000*2*Math.atan2(Math.sqrt(aa),Math.sqrt(1-aa));}
-   if(!info||!info.thumburl||!/^image\/(jpeg|png|webp)$/i.test(info.mime||"")||!matched.length||!isReusable(license)||banned(title+" "+description))return null;
+   const scenic=/\b(beach|shore|coast|coastal|cove|island|dune|ocean|sea|coastline|landscape|bay|lagoon|cliff|headland|lake|river|waterfall|forest|park|marina|harbour|harbor)\b/i.test(norm(title+" "+categories+" "+description));
+   const nearby=Number.isFinite(distance)&&distance<=2500&&scenic;
+   if(!info||!info.thumburl||!/^image\/(jpeg|png|webp)$/i.test(info.mime||"")||!isReusable(license)||banned(title+" "+description+" "+categories))return null;
    if(Number.isFinite(distance)&&distance>10000)return null;
-   if(matched.length<Math.min(2,matchTokens.length))return null;
+   if(matched.length<Math.min(2,matchTokens.length)&&!nearby)return null;
    const width=Number(info.width||0),height=Number(info.height||0);if(width<800||height<400||width<height)return null;
    return {title:title,thumb:info.thumburl,file:info.descriptionurl,license:license,licenseUrl:meta.LicenseUrl&&meta.LicenseUrl.value||"",author:plain(meta.Artist&&meta.Artist.value||meta.Credit&&meta.Credit.value||"Author not stated"),distance:distance,exact:matched.length>0,score:(matched.length?matched.length*100:40)-(distance===null?500:distance/1000)};
  };

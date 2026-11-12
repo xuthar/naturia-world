@@ -28,7 +28,7 @@ function mount(p){
    button.disabled=true;button.textContent="Searching open photographs…";
    results.innerHTML='<p class="place-photo-status">Checking geotagged photos, place names and reuse licences…</p>';
    const q=new URL("https://commons.wikimedia.org/w/api.php");
-   const params={action:"query",format:"json",origin:"*",generator:"search",gsrsearch:tokens(p.name).join(" "),gsrnamespace:"6",gsrlimit:"50",prop:"imageinfo|categories|coordinates",iiprop:"url|extmetadata|mime",iiurlwidth:"1200",iilimit:"1",cllimit:"30"};
+   const params={action:"query",format:"json",origin:"*",generator:"search",gsrsearch:tokens(p.name).join(" "),gsrnamespace:"6",gsrlimit:"50",prop:"imageinfo|categories|coordinates",iiprop:"url|extmetadata|mime|size",iiurlwidth:"1200",iilimit:"1",cllimit:"30"};
    for(const [k,v] of Object.entries(params))q.searchParams.set(k,v);
    try{
      const response=await fetch(q.toString(),{credentials:"omit",referrerPolicy:"no-referrer",headers:{Accept:"application/json"}});
@@ -54,7 +54,8 @@ function mount(p){
        const mime=info?.mime||"";
        if(!info||!info.thumburl||!/^image\/(jpeg|png|webp)$/i.test(mime)||!hasName||!isReusable(license)||banned(title+" "+categories))return null;
        if(Number.isFinite(distance)&&distance>10000)return null;
-       if((info.width||0)<800||(info.height||0)<400||info.width<info.height)return null;
+       const imgWidth=info.width||info.thumbwidth||0,imgHeight=info.height||info.thumbheight||0;
+       if(imgWidth<800||imgHeight<400||imgWidth<imgHeight)return null;
        return {title,thumb:info.thumburl,file:info.descriptionurl,license,licenseUrl:meta.LicenseUrl?.value||"",author:plain(meta.Artist?.value||meta.Credit?.value||"Author not stated"),distance:Number.isFinite(distance)?distance:null};
      }).filter(Boolean);
      const unique=found.filter((x,i,a)=>a.findIndex(y=>y.title===x.title)===i).slice(0,6);

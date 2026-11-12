@@ -8,14 +8,14 @@ const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&
 const plain=s=>String(s??"").replace(/<[^>]*>/g," ").replace(/&amp;/g,"&").replace(/&#39;/g,"'");
 const norm=s=>plain(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 const stop=new Set("naturist naturism nudist nude beach beaches coast coastlines shore oasis area resort naturism site lido di of the and at near bay beach place naturista naturismo".split(" "));
-const blocked=new Set("people person man woman men women child children girl boy family crowd portrait selfie tourist tourists visitor visitors nudist nude naked naturist naturism nudity topless sex".split(" "));
+const blocked=new Set("people person man woman men women child children girl boy family crowd portrait selfie tourist tourists visitor visitors nudist nude naked naturist naturism nudity topless sex gay leaf leaves".split(" "));
 const isReusable=license=>{
  const l=String(license||"").trim().toLowerCase();
  if(!l||/\b(nc|nd|non.?commercial|no.?derivatives|unknown)\b/.test(l))return false;
  return l==="cc0"||/^cc0\b/.test(l)||/^public domain\b/.test(l)||/^pd\b/.test(l)||/^cc by(?:-sa)?\s*[0-9]/i.test(l);
 };
 const tokens=s=>(norm(s).match(/[a-z0-9]+/g)||[]).filter(t=>t.length>=4&&!stop.has(t));
-const banned=(s)=>tokens(s).some(t=>blocked.has(t))||/(^|[ _-])(people|person|portrait|selfie|tourist|visitor|nudist|nude|naked|naturist|naturism|topless|family|children|girl|boy|woman|man)([ _.-]|$)/i.test(String(s||""));
+const banned=(s)=>tokens(s).some(t=>blocked.has(t))||/(^|[ _-])(people|person|portrait|selfie|tourist|visitor|nudist|nude|naked|naturist|naturism|topless|family|children|girl|boy|woman|man|gay|leaves?|leaf)([ _.-]|$)/i.test(String(s||""));
 function mount(p){
  const host=document.getElementById("place-photo-gallery");
  if(!host||!p||!Array.isArray(p.coords))return;
@@ -77,6 +77,7 @@ function mount(p){
      button.disabled=false;button.textContent="Search again";
    }
  });
+ button.click();
 }
 window.NATURIA_PLACE_PHOTOS={mount};
 })();

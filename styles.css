@@ -435,3 +435,11 @@ h1,h2{font-weight:700}
 .shelf-learn .adventure-copy b{color:#6c5c87}.shelf-plan .adventure-copy b{color:#96613e}.shelf-perspectives .adventure-copy b{color:#5e765c}
 @media(max-width:1050px){.home-shortcuts{grid-template-columns:repeat(3,minmax(0,1fr))}.shortcut-label{grid-column:1/-1;padding:0 7px}.adventure-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){.home-shortcuts{grid-template-columns:1fr;margin-top:-8px}.home-shortcuts>a{padding:9px 11px}.shortcut-label{padding:2px 5px}.adventure-shelf{padding:14px;border-radius:20px}.adventure-grid,.adventure-grid-three{grid-template-columns:1fr}.adventure-card{min-height:unset;padding:13px}.adventure-heading{gap:11px}.adventure-heading h3{font-size:21px}.adventure-heading p{max-width:38ch}.adventure-art{font-size:30px;padding-right:8px}.adventure-number{flex-basis:39px;width:39px;height:39px;font-size:15px}}
+
+
+/* Keep hero and page button variants distinct from the shared primary button. */
+.btn.btn-light{background:#fff;color:#176f73;border-color:#c7e7e3;box-shadow:none}
+.btn.btn-light:hover{background:#eafaf5;color:#12585f;border-color:#a9d5cb}
+.btn.btn-peach{background:#fb9d74;color:#482d2b;border-color:#fb9d74}
+.btn.btn-peach:hover{background:#f58c67;color:#482d2b;border-color:#f58c67}
+.btn.btn-quiet{background:transparent;color:#176f73;border-color:#b5dbd9;box-shadow:none}

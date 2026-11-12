@@ -133,7 +133,7 @@ function mountCards(list,container){
    if(!cardCache.has(id))cardCache.set(id,searchCardPhoto(p).catch(()=>null));
    cardCache.get(id).then(photo=>{
      if(!el.isConnected)return;
-     if(!photo){el.dataset.photoState="empty";el.classList.add("photo-not-found");if(el.classList.contains("nr-wild-photo"))el.innerHTML='<span class="nr-photo-placeholder">No verified real photo found</span>';return;}
+     if(!photo){el.dataset.photoState="empty";el.classList.add("photo-not-found");const placeholder=el.querySelector(".nr-photo-placeholder");if(placeholder)placeholder.textContent="No verified real place photo yet";return;}
      el.dataset.photoState="loaded";el.classList.add("has-real-photo");
      const proximity=photo.exact?"":" · nearby landscape";
      const credit='<span class="nr-photo-credit">'+esc(photo.author)+' · '+esc(photo.license)+proximity+' · Wikimedia Commons</span>';

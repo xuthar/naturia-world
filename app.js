@@ -382,6 +382,7 @@ function home(){
  <section class="section"><div class="page-width"><div class="quote">“Naturism is a way of life in harmony with nature…”<small>— International Naturist Federation, 1974 definition · <a href="https://inf-fni.org/fifty-years-of-the-definition-of-naturism/" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">Read the complete definition ↗</a></small></div></div></section>
  ${section({title:'Find somewhere lovely',desc:'Not all places have the same status. Every card explains whether it is officially listed, operator-managed or traditionally used.',button:'<a class="btn btn-light" href="#/places">See the directory ↗</a>',content:`<div class="cards-grid">${['capocotta','euronat','valalta'].map(id=>placeCard(byId[id])).join('')}</div>`})}
  <section class="section-tight"><div class="page-width"><div class="notice"><strong>📌 Check before you travel</strong>Our guides explain published information, not a promise of legal permission or firsthand reviews. Sites, court decisions and local access may change; verify official sources and signs on the day.</div></div></section>`;
+ if(window.NATURIA_PLACE_PHOTOS)window.NATURIA_PLACE_PHOTOS.mountCards([...D.wildRemote,...D.places],root)
 }
 function countriesPage(){
  root.innerHTML=header({kicker:'Countries & cultures',title:'Every place has a <span class="accent">different story.</span>',desc:'Browse dedicated national profiles. Research-rich guides are clearly separated from starter profiles awaiting deeper local verification.',crumb:[['Countries']]})+

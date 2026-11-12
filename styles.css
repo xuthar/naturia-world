@@ -457,3 +457,27 @@ h1,h2{font-weight:700}
 .footer-tiny{color:#405a53!important}
 .footer-base{border-top-color:#c8d5ca;color:#4b625a}
 .footer a:focus-visible{outline:3px solid #176f73;outline-offset:3px;border-radius:3px}
+
+
+/* Licensed landscape photographs for individual destination pages. */
+.place-photo-panel{overflow:hidden}
+.place-photo-heading{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.place-photo-heading>span{display:grid;place-items:center;width:45px;height:45px;border-radius:14px;background:#e5f0e6;font-size:23px}
+.place-photo-heading h3{margin:2px 0 0;font-size:21px}
+.place-photo-kicker{font-size:9px;letter-spacing:.13em;font-weight:950;color:#8a7253}
+.place-photo-panel>p{color:#587176;font-size:13px;line-height:1.75}
+.place-photo-privacy{font-size:10px!important;color:#708383!important}
+.place-photo-results{margin-top:18px}
+.place-photo-status{padding:14px 16px;border-radius:13px;background:#f3f5ed;color:#546b65;font-size:12px}
+.place-photo-empty{display:grid;gap:5px;padding:17px 19px;background:#f2f5ec;border:1px solid #dce6d9;border-radius:15px;color:#3b5a52}
+.place-photo-empty strong{font:700 17px var(--heading)}
+.place-photo-empty span{font-size:12px;line-height:1.65;color:#61756f}
+.place-photo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+.place-photo-card{overflow:hidden;margin:0;border:1px solid #d9e3da;border-radius:17px;background:#fff;box-shadow:0 7px 20px rgba(38,78,68,.07)}
+.place-photo-card>a{display:block;background:#e9f1e8}
+.place-photo-card img{display:block;width:100%;height:230px;object-fit:cover}
+.place-photo-card figcaption{display:grid;gap:5px;padding:12px 14px;color:#546d65;font-size:10px;line-height:1.45;overflow-wrap:anywhere}
+.place-photo-card figcaption strong{font-size:12px;color:#2c4d45}
+.place-photo-card figcaption a,.place-photo-note a{color:#176f73;font-weight:800;text-decoration:underline;text-underline-offset:2px}
+.place-photo-note{font-size:10px!important;color:#6a7d77!important}
+@media(max-width:600px){.place-photo-grid{grid-template-columns:1fr}.place-photo-card img{height:215px}}

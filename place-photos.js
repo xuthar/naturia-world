@@ -7,7 +7,7 @@ const root=document.getElementById("content");
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const plain=s=>String(s??"").replace(/<[^>]*>/g," ").replace(/&amp;/g,"&").replace(/&#39;/g,"'");
 const norm=s=>plain(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
-const stop=new Set("naturist naturism nudist nude beach beaches coast coastlines shore oasis area resort naturism site lido di of the and at near bay beach place naturista naturismo".split(" "));
+const stop=new Set("naturist naturism nudist nude beach beaches beachside coast coastal coastlines shoreline shore shores oasis area resort site lido di of the and at near bay bays cove coves island islands archipelago river rivers lake lakes forest forests woods park parks city town village church building buildings point peninsula naturista naturismo".split(" "));
 const blocked=new Set("people person man woman men women child children girl boy family crowd portrait selfie tourist tourists visitor visitors nudist nude naked naturist naturism nudity topless sex swimmer swimmers".split(" "));
 const isReusable=license=>{
  const l=String(license||"").trim().toLowerCase();

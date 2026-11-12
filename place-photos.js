@@ -8,19 +8,19 @@ const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&
 const plain=s=>String(s??"").replace(/<[^>]*>/g," ").replace(/&amp;/g,"&").replace(/&#39;/g,"'");
 const norm=s=>plain(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 const stop=new Set("naturist naturism nudist nude beach beaches coast coastlines shore oasis area resort naturism site lido di of the and at near bay beach place naturista naturismo".split(" "));
-const blocked=new Set("people person man woman men women child children girl boy family crowd portrait selfie tourist tourists visitor visitors nudist nude naked naturist naturism nudity topless sex gay leaf leaves".split(" "));
+const blocked=new Set("people person man woman men women child children girl boy family crowd portrait selfie tourist tourists visitor visitors nudist nude naked naturist naturism nudity topless sex gay leaf leaves beach beaches spiaggia spiagge swimmer swimmers".split(" "));
 const isReusable=license=>{
  const l=String(license||"").trim().toLowerCase();
  if(!l||/\b(nc|nd|non.?commercial|no.?derivatives|unknown)\b/.test(l))return false;
  return l==="cc0"||/^cc0\b/.test(l)||/^public domain\b/.test(l)||/^pd\b/.test(l)||/^cc by(?:-sa)?\s*[0-9]/i.test(l);
 };
 const tokens=s=>(norm(s).match(/[a-z0-9]+/g)||[]).filter(t=>t.length>=4&&!stop.has(t));
-const banned=(s)=>tokens(s).some(t=>blocked.has(t))||/(^|[ _-])(people|person|portrait|selfie|tourist|visitor|nudist|nude|naked|naturist|naturism|topless|family|children|girl|boy|woman|man|gay|leaves?|leaf)([ _.-]|$)/i.test(String(s||""));
+const banned=(s)=>tokens(s).some(t=>blocked.has(t))||/(^|[ _-])(people|person|portrait|selfie|tourist|visitor|nudist|nude|naked|naturist|naturism|topless|family|children|girl|boy|woman|man|gay|leaves?|leaf|beaches?|spiaggia|spiagge|swimmers?)([ _.-]|$)/i.test(String(s||""));
 function mount(p){
  const host=document.getElementById("place-photo-gallery");
  if(!host||!p||!Array.isArray(p.coords))return;
  const btnId="commons-photo-search-"+String(p.id).replace(/[^a-z0-9_-]/gi,"");
- host.innerHTML='<section class="panel detail-card place-photo-panel"><div class="place-photo-heading"><span aria-hidden="true">📷</span><div><span class="place-photo-kicker">REAL PLACE PHOTOGRAPHS</span><h3>See the landscape</h3></div></div><p>Search Wikimedia Commons for open-license photographs matched to this place name. Where the file has coordinates, they are checked against the approximate map location. Every result shows its author, licence and source.</p><button class="btn btn-small" type="button" id="'+esc(btnId)+'">Find landscape photos</button><p class="place-photo-privacy">This search sends the place name and approximate atlas coordinates to Wikimedia Commons. It does not upload files or select images of people by design.</p><div class="place-photo-results" aria-live="polite"></div></section>';
+ host.innerHTML='<section class="panel detail-card place-photo-panel"><div class="place-photo-heading"><span aria-hidden="true">📷</span><div><span class="place-photo-kicker">REAL PLACE PHOTOGRAPHS</span><h3>See the landscape</h3></div></div><p>Search Wikimedia Commons for open-license photographs matched to this place name. Where the file has coordinates, they are checked against the approximate map location. Every result shows its author, licence and source.</p><button class="btn btn-small" type="button" id="'+esc(btnId)+'">Find landscape photos</button><p class="place-photo-privacy">This search sends the place name and approximate atlas coordinates to Wikimedia Commons. It does not upload files; open the linked Commons page to inspect the full image and its licence.</p><div class="place-photo-results" aria-live="polite"></div></section>';
  const button=document.getElementById(btnId),results=host.querySelector(".place-photo-results");
  const lat=Number(p.coords[0]),lon=Number(p.coords[1]);
  if(!Number.isFinite(lat)||!Number.isFinite(lon)){button.disabled=true;button.textContent="No map coordinates";return;}

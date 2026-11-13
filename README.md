@@ -6,8 +6,8 @@ An illustrated, non-sexual, English-language naturism atlas and learning site. O
 **https://xuthar.github.io/naturia-world/**
 
 ## Features
-- Interactive SVG world map and 35 country profiles.
-- 102 directory records including 101 places and one explicit legal caution; all sourced. Regional and municipal designations must still be verified before visiting.
+- Interactive SVG world map and 37 country profiles.
+- 216 mapped destination entries plus one explicit legal caution; sources and status are labelled, and regional and municipal designations still need checking before a visit.
 - Expanded regional explorer, dedicated country pages, and location cards.
 - Illustrated signage glossary and legal observatory (legal *context*, not legal advice).
 - An integrated Understanding Naturism library with 16 detailed educational chapters, 30 searchable FAQ answers, 37 glossary entries and 16 source-linked myth checks.
@@ -19,6 +19,8 @@ An illustrated, non-sexual, English-language naturism atlas and learning site. O
 
 ## Research
 Sources include FENAIT, FPN, FEN, INF-FNI, National Trust, NSW National Parks, NPS, VisitDenmark and local authorities. The source-attributed beach directory and the country guides live together in `data.js`. Newly added pins are approximate localities, **not** beach entry points. Entries tagged traditional must never be interpreted as officially authorised. All editorial entries distinguish source evidence from legal permission and personal experience.
+
+The 13 November 2026 photo audit checked all 243 unique destination/resort records against Commons. The card search now requires a strong name match or a scenic geotag within 1.5 km, and resort cards require a property-name match. A visible neutral placeholder is kept when evidence is missing.
 
 Weekly source-link HTTP checks are defined in `.github/workflows/source-audit.yml`. They produce `content/source-status.json` and do **not** automatically alter legal information. A HTTP error might be an anti-bot measure; manual review is required.
 
@@ -47,10 +49,11 @@ Navigate to `#/naturism` for chapters on history and FKK, meaning, body neutrali
 
 ## Original illustrated landscape gallery and resort research
 - Six original anime-style landscape illustrations stored in `assets/nature/`, all depicting **imaginary scenes**, not real resort images.
-- 31 original desk-researched resort accommodation profiles in `#/resorts`, searchable by country and dress policy.
+- 78 visually reviewed, open-license Wikimedia landscape photographs are indexed in `assets/place-photo-index.json` (56 locality-name matches and 22 clearly labelled nearby views). Images show the author, licence and file source; visitor images and uncertain matches are excluded.
+- 31 desk-researched resort accommodation profiles in `#/resorts`, searchable by country and published dress policy.
 - Resort notes discuss operator-described amenities, setting and practical caveats. Only selected profiles link to independently published, authentic traveller-review sites; no manufactured guest feedback, star ratings, live prices or booking availability.
-- 15 additional source-attributed Croatian island coves and traditional coastal areas; `#/wild` also features relevant existing Spain/Portugal entries. A remote coastline is never assumed to permit nudity.
-- Main homepage features landscape gallery and resort/wild discovery cards; the redundant photographs counter has been removed.
+- A 35-entry quiet-coast index brings together 15 Croatian island coves, existing Iberian entries and source-backed North and South American coastlines. It preserves each place’s original status and does not treat remoteness as permission.
+- Main homepage now uses a compact four-path directory, a cross-region landscape gallery, one learning panel and a small country sample. The `#/explore` hub keeps the complete route list grouped by task.
 
 ## Atlas expansion: Americas, South America and Asia
 

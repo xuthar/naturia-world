@@ -515,3 +515,37 @@ h1,h2{font-weight:700}
 @media(max-width:580px){.nr-resort-photo{height:180px;min-height:180px}.nr-resort-detail-photo{min-height:220px}}
 
 .country-photo{height:160px;margin:-1px -1px 0;border-radius:25px 25px 0 0}.country-card-content{padding:21px 23px 23px}.country-photo.has-real-photo{min-height:160px}.country-photo .pin{margin-left:auto}
+
+/* Compact Naturia navigation, homepage and directory hub */
+.hero-compact{min-height:445px}
+.hero-compact .hero-content{padding:52px 0 78px}
+.hero-compact h1{font-size:clamp(40px,5.4vw,67px);margin-bottom:15px}
+.hero-compact .hero-actions{margin-top:19px}
+.hero-proof{font-size:12px!important;margin-top:18px!important;color:#edfff7!important;letter-spacing:.025em}
+.home-paths{padding:38px 0 42px}
+.home-paths .section-heading{margin-bottom:17px}
+.home-path-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.home-path-grid>a{display:grid;grid-template-columns:42px 1fr;align-items:center;column-gap:11px;row-gap:2px;padding:13px 15px;border:1px solid #d5e8e3;border-radius:16px;background:rgba(255,255,255,.9);box-shadow:0 5px 17px #32697f0b;transition:transform .18s,border-color .18s}
+.home-path-grid>a:hover{transform:translateY(-2px);border-color:#91cdc0}
+.home-path-grid>a>span{grid-row:span 2;display:grid;place-items:center;width:39px;height:39px;border-radius:12px;background:#e6f6ed;font-size:22px}
+.home-path-grid>a:nth-child(2)>span{background:#fff1dd}.home-path-grid>a:nth-child(3)>span{background:#e8f2f4}.home-path-grid>a:nth-child(4)>span{background:#f0eafe}
+.home-path-grid strong{font-size:13px;line-height:1.25;color:#28575c}.home-path-grid small{font-size:10px;line-height:1.35;color:#72888a}
+.home-library{padding:40px 0;background:linear-gradient(110deg,#eef9f2,#fffaf3)}
+.home-library-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center}
+.home-library-grid h2{margin:9px 0 11px}.home-library-grid>div:first-child>p{max-width:650px;color:#55717b;font-size:14px;line-height:1.7}
+.home-library-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.home-library-links>a{display:grid;gap:5px;padding:14px 15px;border:1px solid #d9eae4;border-radius:14px;background:#fff;color:#2d6066;font-size:12px;font-weight:850}
+.home-library-links>a span{font-size:10px;color:#779095;font-weight:600}
+.explore-hub-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+.explore-hub-card{padding:22px;border:1px solid #d8e9e4;border-radius:20px;background:#fff;box-shadow:0 9px 24px #32697f0d}
+.explore-hub-heading{display:flex;align-items:flex-start;gap:13px;margin-bottom:13px}
+.explore-hub-heading>span{display:grid;place-items:center;flex:0 0 43px;height:43px;border-radius:14px;background:#e7f7ed;font-size:24px}
+.explore-hub-heading h2{font-size:21px;margin:1px 0 4px}.explore-hub-heading p{font-size:12px;line-height:1.55;color:#6a8086;margin:0}
+.explore-hub-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.explore-hub-links a{display:grid;gap:2px;padding:10px 12px;border-radius:11px;background:#f5faf7;border:1px solid #e7f0ec}
+.explore-hub-links a:hover{background:#e8f7ef;border-color:#c9e7db}
+.explore-hub-links strong{font-size:11px;color:#315e61}.explore-hub-links span{font-size:10px;color:#788f90}
+.explore-note{margin-top:20px}
+@media(max-width:900px){.home-path-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home-library-grid{grid-template-columns:1fr;gap:20px}}
+@media(max-width:650px){.explore-hub-grid{grid-template-columns:1fr}.explore-hub-card{padding:17px}.home-library-links{grid-template-columns:1fr 1fr}.hero-compact{min-height:390px}.hero-compact .hero-content{padding:42px 0 58px}}
+@media(max-width:480px){.home-path-grid{grid-template-columns:1fr}.home-path-grid>a{padding:11px 12px}.home-library-links{grid-template-columns:1fr}.explore-hub-links{grid-template-columns:1fr 1fr}.home-paths .section-heading{align-items:flex-start;flex-direction:column;gap:4px}}

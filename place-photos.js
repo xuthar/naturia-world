@@ -4,10 +4,11 @@
 (function(){
 "use strict";
 const root=document.getElementById("content");
+const photoIndexReady=fetch("assets/place-photo-index.json",{credentials:"omit",cache:"no-cache"}).then(r=>r.ok?r.json():{}).catch(()=>({}));
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const plain=s=>String(s??"").replace(/<[^>]*>/g," ").replace(/&amp;/g,"&").replace(/&#39;/g,"'");
 const norm=s=>plain(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
-const stop=new Set("naturist naturism nudist nude beach beaches beachside coast coastal coastlines shoreline shore shores oasis area resort site lido di of the and at near bay bays cove coves island islands archipelago river rivers lake lakes forest forests woods park parks city town village church building buildings point peninsula naturista naturismo".split(" "));
+const stop=new Set("naturist naturism nudist nude beach beaches beachside coast coastal coastlines shoreline shore shores oasis area resort site lido di of the and at near bay bays cove coves island islands archipelago river rivers lake lakes forest forests woods park parks city town village church building buildings point peninsula naturista naturismo praia praias playa playas plage plages spiaggia spiagge strand stranden fkk".split(" "));
 const blocked=new Set("people person man woman men women child children girl boy family crowd portrait selfie tourist tourists visitor visitors nudist nude naked naturist naturism nudity topless sex swimmer swimmers maskin scheutz".split(" "));
 const isReusable=license=>{
  const l=String(license||"").trim().toLowerCase();
@@ -62,7 +63,7 @@ function mount(p){
          distance=6371000*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
        }
        const mime=info?.mime||"";
-       if(!info||!info.thumburl||!/^image\/(jpeg|png|webp)$/i.test(mime)||!hasName||!isReusable(license)||banned(title+" "+description))return null;
+       if(!info||!info.thumburl||!/^image\/(jpeg|png|webp)$/i.test(mime)||!hasName||!isReusable(license)||banned(title+" "+description+" "+categories))return null;
        if(Number.isFinite(distance)&&distance>10000)return null;
        const imgWidth=info.width||info.thumbwidth||0,imgHeight=info.height||info.thumbheight||0;
        if(imgWidth<800||imgHeight<400||imgWidth<imgHeight)return null;
@@ -71,6 +72,8 @@ function mount(p){
      const dedupe=items=>items.filter((x,i,a)=>a.findIndex(y=>y.title===x.title)===i).slice(0,6);
      let pages=Object.values(data?.query?.pages||{});
      let unique=dedupe(collect(pages));
+     const indexed=(await photoIndexReady)[p.id];
+     if(indexed&&!unique.some(x=>x.title===indexed.title))unique=[{title:indexed.title,thumb:indexed.thumb,file:indexed.file,license:indexed.license,licenseUrl:indexed.licenseUrl,author:indexed.author,distance:Number.isFinite(indexed.distance_m)?indexed.distance_m:null},...unique].slice(0,6);
      // Exact-name search can miss local nicknames such as Bassona. If needed,
      // ask Commons for files with GPS metadata near the known map point and
      // still require a locality token in the file title, description or categories.
@@ -114,10 +117,11 @@ async function searchCardPhoto(p){
    const license=plain(meta.LicenseShortName&&meta.LicenseShortName.value||""),point=page.coordinates&&page.coordinates[0],fileLat=Number(point&&point.lat||meta.GPSLatitude&&meta.GPSLatitude.value),fileLon=Number(point&&point.lon||meta.GPSLongitude&&meta.GPSLongitude.value);
    let distance=null;if(Number.isFinite(fileLat)&&Number.isFinite(fileLon)){const rad=x=>x*Math.PI/180,dLat=rad(fileLat-lat),dLon=rad(fileLon-lon),aa=Math.sin(dLat/2)**2+Math.cos(rad(lat))*Math.cos(rad(fileLat))*Math.sin(dLon/2)**2;distance=6371000*2*Math.atan2(Math.sqrt(aa),Math.sqrt(1-aa));}
    const scenic=/\b(beach|shore|coast|coastal|cove|island|dune|ocean|sea|coastline|landscape|bay|lagoon|cliff|headland|lake|river|waterfall|forest|park|marina|harbour|harbor)\b/i.test(norm(title+" "+categories+" "+description));
-   const nearby=Number.isFinite(distance)&&distance<=10000&&scenic;
-   if(!info||!info.thumburl||!/^image\/(jpeg|png|webp)$/i.test(info.mime||"")||!isReusable(license)||banned(title+" "+description))return null;
+   const nearby=Number.isFinite(distance)&&distance<=1500&&scenic;
+   if(!info||!info.thumburl||!/^image\/(jpeg|png|webp)$/i.test(info.mime||"")||!isReusable(license)||banned(title+" "+description+" "+categories))return null;
    if(Number.isFinite(distance)&&distance>10000)return null;
    const exact=phrase||(matched.length>=Math.min(2,matchTokens.length)&&matchTokens.length>1)||(matchTokens.length===1&&matchTokens[0].length>=7);
+   if((p.policy||p.type==="resort")&&!exact)return null;
    if(!exact&&!nearby)return null;
    const width=Number(info.width||0),height=Number(info.height||0);if(width<800||height<400||width<height)return null;
    return {title:title,thumb:info.thumburl,file:info.descriptionurl,license:license,licenseUrl:meta.LicenseUrl&&meta.LicenseUrl.value||"",author:plain(meta.Artist&&meta.Artist.value||meta.Credit&&meta.Credit.value||"Author not stated"),distance:distance,exact:exact,score:(exact?300+matched.length*100:40)-(distance===null?500:distance/1000)};
@@ -133,7 +137,7 @@ async function searchCardPhoto(p){
 function mountCards(list,container){
  if(!container)return;const places=new Map((list||[]).map(p=>[String(p.id),p])),targets=[...container.querySelectorAll("[data-place-photo-id]")];
  const load=el=>{const id=el.getAttribute("data-place-photo-id"),p=places.get(id);if(!p||!el.isConnected)return;el.dataset.photoState="loading";if(el.classList.contains("nr-wild-photo"))el.innerHTML='<span class="nr-photo-placeholder">Searching for a real place photograph…</span>';
-   if(!cardCache.has(id))cardCache.set(id,searchCardPhoto(p).catch(()=>null));
+   if(!cardCache.has(id))cardCache.set(id,photoIndexReady.then(index=>index[id]||searchCardPhoto(p)).catch(()=>searchCardPhoto(p)).catch(()=>null));
    cardCache.get(id).then(photo=>{
      if(!el.isConnected)return;
      if(!photo){el.dataset.photoState="empty";el.classList.add("photo-not-found");const placeholder=el.querySelector(".nr-photo-placeholder");if(placeholder)placeholder.textContent="No verified real place photo yet";return;}

@@ -1,8 +1,8 @@
 {
-  "run_date_utc": "2026-11-09",
+  "run_date_utc": "2026-11-16",
   "method": "HTTP availability only. This does not verify legal content, accuracy, opening, permissions or official recognition.",
   "checked_count": 40,
-  "needs_review_count": 0,
+  "needs_review_count": 1,
   "results": [
     {
       "url": "https://bn.org.uk/",
@@ -31,8 +31,8 @@
     },
     {
       "url": "https://events.inf-fni.org/",
-      "status": "reachable",
-      "http_code": 200
+      "status": "needs_review",
+      "http_code": null
     },
     {
       "url": "https://fenait.org/",
